@@ -1,1 +1,7 @@
-namespace mt.tomassetti.javaformatter
+namespace me.tomassetti.javaformatter
+
+import java.lang.System.out.println as print
+
+program JavaFormatter(String[] args) {
+	print("Java Formatter v0.1")
+}
