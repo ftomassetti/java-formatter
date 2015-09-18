@@ -2,6 +2,7 @@ namespace me.tomassetti.javaformatter
 
 import java.lang.System.out.println as print
 import java.lang.System.err.println as eprint
+import com.github.javaparser.ast.CompilationUnit
 
 Void fatalError(String msg) {
 	eprint(msg)
@@ -14,13 +15,13 @@ CompilationUnit parse(String path) {
 
 program JavaFormatter(String[] args) {
 	print("Java Formatter v0.1")
-	if (args.length != 1) {
+	if args.length != 1 {
 		fatalError("pass exactly one parameter")
 	}
 	try {
 		val cu = parse(args[0])
-	} catch (Exception e) {
-		fatalError("Issue parsing #{args[0]}: #{e.getMessage}")
+	} catch Exception e {
+		fatalError("Issue parsing #{args[0]}: #{e.getMessage()}")
 	}
 	throw UnsupportedOperationException("To be implemented")
 }
