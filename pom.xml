@@ -14,6 +14,17 @@
             <artifactId>javaparser-core</artifactId>
             <version>2.2.1</version>
         </dependency>
+        <dependency>
+            <groupId>me.tomassetti</groupId>
+            <artifactId>turin-standard-library</artifactId>
+            <version>0.0.1-20150928-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+          <groupId>junit</groupId>
+          <artifactId>junit</artifactId>
+          <version>4.12</version>
+          <scope>test</scope> 
+        </dependency>          
     </dependencies>        
 
     <build>
@@ -21,10 +32,14 @@
             <plugin>
                 <groupId>me.tomassetti.turin</groupId>
                 <artifactId>turin-maven-plugin</artifactId>
-                <version>0.1-SNAPSHOT</version>
+                <version>0.1.1-SNAPSHOT</version>
                 <executions>
                     <execution>
-                        <goals><goal>compile-turin</goal></goals>
+                        <goals>
+                            <goal>compile-turin</goal>
+                            <goal>test-compile-turin</goal>
+                            <goal>test-turin</goal>
+                        </goals>
                     </execution>
                 </executions>
                 <configuration>
