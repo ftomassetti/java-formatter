@@ -1,0 +1,10 @@
+namespace me.tomassetti.javaformatter
+
+import turin.test.Test
+
+@Test
+void formatSimpleFile() {
+    val cu = parseCode("class A { }")
+    val formatted = format(cu, Options())
+    org.junit.Assert.assertEquals("class A {\n}\n", formatted)
+}

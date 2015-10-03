@@ -1,0 +1,1 @@
+mvn exec:java -Dexec.mainClass=me.tomassetti.javaformatter.JavaFormatter -Dexec.args="/home/federico/repos/turin-programming-language/turin-compiler/src/main/java/me/tomassetti/turin/TurinClassLoader.java"

@@ -5,6 +5,9 @@ import java.lang.System.err.println as eprint
 import com.github.javaparser.ast.CompilationUnit
 import com.github.javaparser.JavaParser
 import java.io.*
+import java.nio.charset.*
+
+import java.io.InputStream
 
 type Options {
     boolean newLinesAfterLBracket default false
@@ -17,12 +20,19 @@ void fatalError(String msg) {
 	System.exit(1)
 }
 
-CompilationUnit parse(String path) {
-	//throw UnsupportedOperationException("To be implemented")
+CompilationUnit parseFile(String path) {
 	return JavaParser.parse(File(path))
 }
 
-String format(CompilationUnit cu) {
+CompilationUnit parseCode(String code) {
+	return JavaParser.parse(toInputStream(code))
+}
+
+InputStream toInputStream(String string) {
+    return ByteArrayInputStream(string.getBytes(StandardCharsets.v#UTF_8))
+}
+
+String format(CompilationUnit cu, Options options) {
 	val sw = StringWriter()
  	val pw = PrintWriter(sw)
 
@@ -40,12 +50,12 @@ program JavaFormatter(String[] args) {
 		fatalError("pass exactly one parameter")
 	}
 	try {
-		val cu = parse(args[0])
+		val cu = parseFile(args[0])
 		if debug {
 			print("Parsed correctly")
 		}
 		print("OUTPUT:")
-		print(format(cu))
+		print(format(cu, options))
 	} catch Exception e {
 		fatalError("Issue parsing #{args[0]}: #{e.getMessage()}")
 	}
